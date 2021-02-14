@@ -1,0 +1,7 @@
+FROM centos:latest
+
+RUN yum install openssh-server passwd python3 -y
+RUN ssh-keygen -A
+COPY entry.py  /
+ENV ROOT_PASSWORD=""
+ENTRYPOINT  ["python3","entry.py","$ROOT_PASSWORD"]
